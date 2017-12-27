@@ -44,9 +44,9 @@ class PrecisionTest extends FunSuite {
       geohash1.get_hash2() == geohash2.get_hash2())
   }
 
-  test("North pole adjustment, great circle distance = 222.4km") {
+  test("North pole adjustment, great circle distance = 22.24km") {
     val geohash1 = Geohash(89.9, 0, 8)
-    val geohash2 = Geohash(89.9, 180, 8)
+    val geohash2 = Geohash(89.9, 179, 8)
 
     assert(geohash1.get_hash1() == geohash2.get_hash1() ||
       geohash1.get_hash2() == geohash2.get_hash2())
@@ -103,6 +103,14 @@ class PrecisionTest extends FunSuite {
   test("High precision test4(exact equal), great circle distance = 0m") {
     val geohash1 = Geohash(0.00001, 0.00001, 32)
     val geohash2 = Geohash(0.00001, 0.00001, 32)
+
+    assert(geohash1.get_hash1() == geohash2.get_hash1() ||
+      geohash1.get_hash2() == geohash2.get_hash2())
+  }
+
+  test("North pole test, 90N") {
+    val geohash1 = Geohash(90, 0, 32)
+    val geohash2 = Geohash(90, 179.9, 32)
 
     assert(geohash1.get_hash1() == geohash2.get_hash1() ||
       geohash1.get_hash2() == geohash2.get_hash2())

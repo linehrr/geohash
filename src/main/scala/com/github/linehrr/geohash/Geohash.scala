@@ -18,7 +18,7 @@ class Geohash(lat: Double, long: Double, precision: Int) extends Serializable {
           adj_lat = adj_lat % (180 / pow(2, p))
         }
 
-        if (adj_lng >= 180 / pow(2, p*cos(toRadians(floor(abs(lat)*precision/32))))) {
+        if (adj_lng >= 180 / pow(2, p*cos(toRadians(round(abs(lat)))))) {
           hash = hash + (1 << (2*p - 1))
           adj_lng = adj_lng % (180 / pow(2, p))
         }
