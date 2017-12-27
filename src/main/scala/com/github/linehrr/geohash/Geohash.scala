@@ -35,6 +35,9 @@ class Geohash(lat: Double, long: Double, precision: Int) extends Serializable {
 }
 
 object Geohash {
+  @throws[PrecisionOutOfRangeException.type]
+  @throws[LatitudeOutOfRangeException.type]
+  @throws[LongitudeOutOfRangeException.type]
   def apply(lat: Double, long: Double, precision: Int = 12): Geohash = {
     if (precision < 1 || precision > 32) throw PrecisionOutOfRangeException
     if (lat < -90 || lat > 90) throw LatitudeOutOfRangeException
