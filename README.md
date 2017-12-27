@@ -48,7 +48,7 @@ test("North pole test, 90N") {
 standard geohash also suffers from edge case where 1N/0W and 1S/0W would be considered as very far places.  
 this algorithm also tries to fix that by duo-hashing.  
 e.g.
-```
+```scala
  test("High precision test3(close to tropical, edge case), great circle distance = 3.1m") {
     // 2 points, very close to each other, but lat and lng both crossed the edge
     val geohash1 = Geohash(-0.00001, -0.00001, 23)
