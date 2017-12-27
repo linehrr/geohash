@@ -1,4 +1,6 @@
 package com.github.linehrr.geohash
+import com.github.linehrr.geohash.exception.{LatitudeOutOfRangeException, LongitudeOutOfRangeException, PrecisionOutOfRangeException}
+
 import scala.math._
 
 class Geohash(lat: Double, long: Double, precision: Int) extends Serializable {
@@ -33,5 +35,10 @@ class Geohash(lat: Double, long: Double, precision: Int) extends Serializable {
 }
 
 object Geohash {
-  def apply(lat: Double, long: Double, precision: Int = 12): Geohash = new Geohash(lat, long, precision)
+  def apply(lat: Double, long: Double, precision: Int = 12): Geohash = {
+    if (precision < 1 || precision > 32) throw PrecisionOutOfRangeException
+    if (lat < -90 || lat > 90) throw LatitudeOutOfRangeException
+    if (long < -180 || long > 180) throw LongitudeOutOfRangeException
+    new Geohash(lat, long, precision)
+  }
 }
