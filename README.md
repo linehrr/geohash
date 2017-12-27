@@ -73,7 +73,6 @@ TBD(please refer to test cases to get some sense)
 
 ## Drawbacks
 Precision has to be given pre-determined.  
-after given precision, result can only be down-casting not up-casting.  
-Masking the bits from LSB can down-cast precision:  
-`result & (2**n - 1)` will give precision = n (n <= precision)
+after given precision, result can't be adjusted unless re-calculate.  
+bits masking won't work since this algorithm is not linear.
 
