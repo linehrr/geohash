@@ -99,4 +99,12 @@ class PrecisionTest extends FunSuite {
     assert(geohash1.get_hash1() == geohash2.get_hash1() ||
       geohash1.get_hash2() == geohash2.get_hash2())
   }
+
+  test("High precision test4(exact equal), great circle distance = 0m") {
+    val geohash1 = Geohash(0.00001, 0.00001, 32)
+    val geohash2 = Geohash(0.00001, 0.00001, 32)
+
+    assert(geohash1.get_hash1() == geohash2.get_hash1() ||
+      geohash1.get_hash2() == geohash2.get_hash2())
+  }
 }
