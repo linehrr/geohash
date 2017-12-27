@@ -60,7 +60,7 @@ e.g.
 ```
 real usage case could be using 2 group bys and reduce/dedup after:
 ```scala
-  // spark code
+  // spark pseudo code
   val groups = df.groupby(geohash.get_hash1())
     unionall
   df.groupby(geohash.get_hash2())
