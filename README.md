@@ -50,6 +50,7 @@ this algorithm also tries to fix that by duo-hashing.
 e.g.
 ```
  test("High precision test3(close to tropical, edge case), great circle distance = 3.1m") {
+    // 2 points, very close to each other, but lat and lng both crossed the edge
     val geohash1 = Geohash(-0.00001, -0.00001, 23)
     val geohash2 = Geohash(0.00001, .00001, 23)
 
